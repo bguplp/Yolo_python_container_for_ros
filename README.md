@@ -1,28 +1,34 @@
 # Yolo_python_container_for_ros
-Detection Using A Pre-Trained Model
 
-This post will guide you through detecting objects with the YOLO system using a pre-trained model. If you don't already have Darknet installed, you should do that first.
+## **Requirements and istallation:**
+* Linux
+* python >=2
+* CMake >= 3.8 for modern CUDA support: https://cmake.org/download/
+* CUDA https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
+* ROS >= kinetic : http://wiki.ros.org/kinetic/Installation/Ubuntu
+* OpenCV preinstalled with ROS
+* Cudnn >= 7 (Optional) https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html
+* GPU with CC >= 3.0 https://en.wikipedia.org/wiki/CUDA#GPUs_supported
+* GCC
 
-You already have the config file for YOLO in the cfg/ subdirectory. You will have to download the pre-trained weight file here (1.0 GB).
+## **How to run**
+##### Compilation
+Compiling on Linux by using command make (or alternative way by using command: cmake . && make ).
 
-Now you can run the Darknet yolo command in testing mode:
+##### Advanced options(set in the makefile).
+GPU=1
+to build with CUDA to accelerate by using GPU (CUDA should be in /use/local/cuda).
 
-./darknet yolo test cfg/yolo.cfg <path>/yolo.weights <image>
-I've included some example images to try in case you need inspiration. Try data/eagle.jpg, data/dog.jpg, data/person.jpg, or data/horses.jpg! Assuming your weight file is in the base directory, you will see something like this:
+CUDNN=1
+to build with cuDNN to accelerate training by using GPU (cuDNN should be in /usr/local/cudnn).
 
-./darknet yolo test cfg/yolo.cfg yolo.weights data/dog.jpg
-0: Crop Layer: 448 x 448 -> 448 x 448 x 3 image
-1: Convolutional Layer: 448 x 448 x 3 image, 64 filters -> 224 x 224 x 64 image
-....
-27: Connected Layer: 4096 inputs, 1225 outputs
-28: Detection Layer
-Loading weights from yolo.weights...Done!
-data/dog.jpg: Predicted in 8.012962 seconds.
-0.941620 car
-0.397087 bicycle
-0.220952 dog
-Not compiled with OpenCV, saving to predictions.png instead
-Darknet prints out the objects it detected, its confidence, and how long it took to find them. Since we are using Darknet on the CPU it takes around 6-12 seconds per image. If we use the GPU version it would be much faster.
+OPENCV=1 
+to build with OpenCV.
 
-We didn't compile Darknet with OpenCV so it can't display the detections directly. Instead, it saves them in predictions.png. You can open it to see the detected objects:
+OPENMP=1 
+to build with OpenMP support to accelerate Yolo by using multi-core CPU.
 
+## Using a pre trained model with ROS
+
+
+ 
