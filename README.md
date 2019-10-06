@@ -4,7 +4,7 @@
 * Linux
 * python2
 * CMake >= 3.8 for modern CUDA support: https://cmake.org/download/
-* CUDA https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
+* CUDA https://developer.nvidia.com/cuda-toolkit-archive
 * ROS >= kinetic : http://wiki.ros.org/kinetic/Installation/Ubuntu
 * OpenCV preinstalled with ROS
 * Cudnn >= 7 (Optional) https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html
