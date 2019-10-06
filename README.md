@@ -2,7 +2,7 @@
 
 ## **Requirements and istallation:**
 * Linux
-* python >=2
+* python2
 * CMake >= 3.8 for modern CUDA support: https://cmake.org/download/
 * CUDA https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
 * ROS >= kinetic : http://wiki.ros.org/kinetic/Installation/Ubuntu
