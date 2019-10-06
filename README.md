@@ -17,7 +17,7 @@ Compiling on Linux by using command make (or alternative way by using command: c
 
 ##### Advanced options(set in the makefile).
 GPU=1
-to build with CUDA to accelerate by using GPU (CUDA should be in /use/local/cuda).
+to build with CUDA to accelerate by using GPU (CUDA should be in /user/local/cuda).
 
 CUDNN=1
 to build with cuDNN to accelerate training by using GPU (cuDNN should be in /usr/local/cudnn).
