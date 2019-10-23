@@ -73,7 +73,7 @@ to build with OpenMP support to accelerate Yolo by using multi-core CPU.
   backup = backup/
   ```
 
-4. Put image-files (.jpg) of your objects in the directory `build\darknet\x64\data\obj\`
+4. Put image-files (.jpg) of your objects in the directory `/src/ros_yolo/src/darknet/\data\obj\`
 
 5. You should label each object on images from your dataset. Use this visual GUI-software for marking bounded boxes of objects and generating annotation files for Yolo v2 & v3.
 
@@ -95,7 +95,7 @@ It will create `.txt`-file for each `.jpg`-image-file - in the same directory an
   1 0.420312 0.395833 0.140625 0.166667
   ```
 
-6. Create file `train.txt` in directory `build\darknet\x64\data\`, with filenames of your images, each filename in new line, with path relative to `./darknet`, for example containing:
+6. Create file `train.txt` in directory `/src/ros_yolo/src/darknet/data`, with filenames of your images, each filename in new line, with path relative to `./darknet`, for example containing:
 
   ```
   data/obj/img1.jpg
@@ -107,8 +107,8 @@ It will create `.txt`-file for each `.jpg`-image-file - in the same directory an
 
 8. Start training by using the command line: `./darknet detector train data/obj.data yolo-obj.cfg darknet53.conv.74`
      
-   * (file `yolo-obj_last.weights` will be saved to the `build\darknet\x64\backup\` for each 100 iterations)
-   * (file `yolo-obj_xxxx.weights` will be saved to the `build\darknet\x64\backup\` for each 1000 iterations)
+   * (file `yolo-obj_last.weights` will be saved to the `/src/ros_yolo/src/darknet/backup` for each 100 iterations)
+   * (file `yolo-obj_xxxx.weights` will be saved to the `/src/ros_yolo/src/darknet/backup` for each 1000 iterations)
    * (to disable Loss-Window use `./darknet detector train data/obj.data yolo-obj.cfg darknet53.conv.74 -dont_show`, if you train on computer without monitor like a cloud Amazon EC2)
    * (to see the mAP & Loss-chart during training on remote server without GUI, use command `./darknet detector train data/obj.data yolo-obj.cfg darknet53.conv.74 -dont_show -mjpeg_port 8090 -map` then open URL `http://ip-address:8090` in Chrome/Firefox browser)
 
@@ -155,7 +155,7 @@ Usually sufficient 2000 iterations for each class(object), but not less than 400
 
   When you see that average loss **0.xxxxxx avg** no longer decreases at many iterations then you should stop training. The final avgerage loss can be from `0.05` (for a small model and easy dataset) to `3.0` (for a big model and a difficult dataset).
 
-2. Once training is stopped, you should take some of last `.weights`-files from `darknet\build\darknet\x64\backup` and choose the best of them:
+2. Once training is stopped, you should take some of last `.weights`-files from `/src/ros_yolo/src/darknet/backup` and choose the best of them:
 
 For example, you stopped training after 9000 iterations, but the best result can give one of previous weights (7000, 8000, 9000). It can happen due to overfitting. **Overfitting** - is case when you can detect objects on images from training-dataset, but can't detect objects on any others images. You should get weights from **Early Stopping Point**:
 
