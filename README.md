@@ -95,7 +95,7 @@ It will create `.txt`-file for each `.jpg`-image-file - in the same directory an
   1 0.420312 0.395833 0.140625 0.166667
   ```
 
-6. Create file `train.txt` in directory `build\darknet\x64\data\`, with filenames of your images, each filename in new line, with path relative to `darknet.exe`, for example containing:
+6. Create file `train.txt` in directory `build\darknet\x64\data\`, with filenames of your images, each filename in new line, with path relative to `./darknet`, for example containing:
 
   ```
   data/obj/img1.jpg
@@ -109,8 +109,8 @@ It will create `.txt`-file for each `.jpg`-image-file - in the same directory an
      
    * (file `yolo-obj_last.weights` will be saved to the `build\darknet\x64\backup\` for each 100 iterations)
    * (file `yolo-obj_xxxx.weights` will be saved to the `build\darknet\x64\backup\` for each 1000 iterations)
-   * (to disable Loss-Window use `darknet.exe detector train data/obj.data yolo-obj.cfg darknet53.conv.74 -dont_show`, if you train on computer without monitor like a cloud Amazon EC2)
-   * (to see the mAP & Loss-chart during training on remote server without GUI, use command `darknet.exe detector train data/obj.data yolo-obj.cfg darknet53.conv.74 -dont_show -mjpeg_port 8090 -map` then open URL `http://ip-address:8090` in Chrome/Firefox browser)
+   * (to disable Loss-Window use `./darknet detector train data/obj.data yolo-obj.cfg darknet53.conv.74 -dont_show`, if you train on computer without monitor like a cloud Amazon EC2)
+   * (to see the mAP & Loss-chart during training on remote server without GUI, use command `./darknet detector train data/obj.data yolo-obj.cfg darknet53.conv.74 -dont_show -mjpeg_port 8090 -map` then open URL `http://ip-address:8090` in Chrome/Firefox browser)
 
 8.1. For training with mAP (mean average precisions) calculation for each 4 Epochs (set `valid=valid.txt` or `train.txt` in `obj.data` file) and run: `./darknet detector train data/obj.data yolo-obj.cfg darknet53.conv.74 -map`
 
@@ -167,11 +167,9 @@ To get weights from Early Stopping Point:
 
   2.2 If training is stopped after 9000 iterations, to validate some of previous weights use this commands:
 
-(If you use another GitHub repository, then use `darknet.exe detector recall`... instead of `./darknet detector map`...)
-
-* `darknet.exe detector map data/obj.data yolo-obj.cfg backup\yolo-obj_7000.weights`
-* `darknet.exe detector map data/obj.data yolo-obj.cfg backup\yolo-obj_8000.weights`
-* `darknet.exe detector map data/obj.data yolo-obj.cfg backup\yolo-obj_9000.weights`
+* `./darknet detector map data/obj.data yolo-obj.cfg backup\yolo-obj_7000.weights`
+* `./darknet detector map data/obj.data yolo-obj.cfg backup\yolo-obj_8000.weights`
+* `./darknet detector map data/obj.data yolo-obj.cfg backup\yolo-obj_9000.weights`
 
 And comapre last output lines for each weights (7000, 8000, 9000):
 
@@ -181,7 +179,7 @@ For example, **bigger mAP** gives weights `yolo-obj_8000.weights` - then **use t
 
 Or just train with `-map` flag: 
 
-`./darknetdetector train data/obj.data yolo-obj.cfg darknet53.conv.74 -map` 
+`./darknet detector train data/obj.data yolo-obj.cfg darknet53.conv.74 -map` 
 
 So you will see mAP-chart (red-line) in the Loss-chart Window. mAP will be calculated for each 4 Epochs using `valid=valid.txt` file that is specified in `obj.data` file (`1 Epoch = images_in_train_txt / batch` iterations)
 
@@ -198,16 +196,9 @@ In terms of Wiki, indicators Precision and Recall have a slightly different mean
 
 ![precision_recall_iou](https://hsto.org/files/ca8/866/d76/ca8866d76fb840228940dbf442a7f06a.jpg)
 
-### Custom object detection:
-
-Example of custom object detection: `darknet.exe detector test data/obj.data yolo-obj.cfg yolo-obj_8000.weights`
-
-| ![Yolo_v2_training](https://hsto.org/files/d12/1e7/515/d121e7515f6a4eb694913f10de5f2b61.jpg) | ![Yolo_v2_training](https://hsto.org/files/727/c7e/5e9/727c7e5e99bf4d4aa34027bb6a5e4bab.jpg) |
-|---|---|
-
 ## How to improve object detection:
 
-1. Before training:
+### Before training:
   * set flag `random=1` in your `.cfg`-file - it will increase precision by training Yolo for different resolutions: 
 
   * increase network resolution in your `.cfg`-file (`height=608`, `width=608` or any value multiple of 32) - it will increase precision
@@ -244,7 +235,7 @@ Example of custom object detection: `darknet.exe detector test data/obj.data yol
    then set the same 9 `anchors` in each of 3 `[yolo]`-layers in your cfg-file. But you should change indexes of anchors `masks=` for each [yolo]-layer, so that 1st-[yolo]-layer has anchors larger than 60x60, 2nd larger than 30x30, 3rd remaining. Also you should change the `filters=(classes + 5)*<number of mask>` before each [yolo]-layer. If many of the calculated anchors do not fit under the appropriate layers - then just try using all the default anchors.
 
 
-2. After training - for detection:
+### After training - for detection:
 
   * Increase network-resolution by set in your `.cfg`-file (`height=608` and `width=608`) or (`height=832` and `width=832`) or (any value multiple of 32) - this increases the precision and makes it possible to detect small objects.
   
