@@ -34,7 +34,7 @@ to build with OpenMP support to accelerate Yolo by using multi-core CPU.
 2) Run the publish_image.py or your own compressed image publisher with the command rosrun publish_image.py.
 3) Run the alex_yolo.py script with the command rosrun alex_yolo.py.
 
-## training your own model.
+## Training your own model.
 
 
  
