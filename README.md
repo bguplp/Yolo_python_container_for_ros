@@ -30,5 +30,6 @@ to build with OpenMP support to accelerate Yolo by using multi-core CPU.
 
 ## Using a pre trained model with ROS
 
+Run the 
 
  
