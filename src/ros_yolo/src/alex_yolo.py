@@ -35,7 +35,9 @@ class ROSHandler:
         self.net = load_net(WORKING_PATH+'/src/darknet/'+"cfg/yolov3-tiny.cfg", WORKING_PATH+'/src/darknet/'+"data/yolov3-tiny.weights", 0)
         self.meta = load_meta(WORKING_PATH+'/src/darknet/'+"cfg/coco.data")
         self.res_pub = rospy.Publisher('/yolo/results', Detection2DArray, queue_size=1)
-        rospy.Subscriber("/image_raw/compressed",
+        #rospy.Subscriber("/image_raw/compressed/yolo",
+        #                 CompressedImage, self.callback, queue_size=2)
+        rospy.Subscriber("/kinect2/hd/image_color/compressed",
                          CompressedImage, self.callback, queue_size=2)
         self.database = []
         with open(WORKING_PATH+'/src/darknet/'+"data/coco.names", 'r')  as f:
@@ -68,6 +70,7 @@ class ROSHandler:
             detection.bbox.center.x = result[2][0]
             detection.bbox.center.y = result[2][1]
             detections.detections.append(detection)
+	print results
         self.res_pub.publish(detections)
         rospy.loginfo_throttle(1, 'Took yolo %s to process image' % ((rospy.Time.now() - now).to_sec()))
         self.latest_finish_time =rospy.Time.now()

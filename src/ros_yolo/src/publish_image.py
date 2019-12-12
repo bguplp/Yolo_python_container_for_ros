@@ -27,7 +27,7 @@ class ImagePublisher:
         # topic where we publish
 	self.img = cv2.imread('src/darknet/data/dog.jpg', cv2.IMREAD_COLOR)	
         self.image_pub = rospy.Publisher("/image_raw/compressed",
-                                         CompressedImage)
+                                         CompressedImage, queue_size = 2)
         # self.bridge = CvBridge()
 
     def publish_image(self):
