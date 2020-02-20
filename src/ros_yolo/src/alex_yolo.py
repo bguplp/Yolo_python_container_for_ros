@@ -35,9 +35,9 @@ class ROSHandler:
         self.net = load_net(WORKING_PATH+'/src/darknet/'+"cfg/yolov3-tiny.cfg", WORKING_PATH+'/src/darknet/'+"data/yolov3-tiny.weights", 0)
         self.meta = load_meta(WORKING_PATH+'/src/darknet/'+"cfg/coco.data")
         self.res_pub = rospy.Publisher('/yolo/results', Detection2DArray, queue_size=1)
-        #rospy.Subscriber("/image_raw/yolo/compressed",
+        #rospy.Subscriber("/image_raw/compressed/yolo",
         #                 CompressedImage, self.callback, queue_size=2)
-        rospy.Subscriber("/kinect2/qhd/image_color/compressed",
+        rospy.Subscriber("/kinect2/hd/image_color/compressed",
                          CompressedImage, self.callback, queue_size=2)
         self.database = []
         with open(WORKING_PATH+'/src/darknet/'+"data/coco.names", 'r')  as f:
