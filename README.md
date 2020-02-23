@@ -13,7 +13,22 @@
 
 ## **How to run**
 ##### Compilation
-Compiling on Linux by using command make (or alternative way by using command: cmake . && make ).
+Compiling on Linux by using command make (or alternative way by using command: cmake . && make ):
+```bash
+$ cd ~/
+$ git clone https://github.com/bguplp/Yolo_python_container_for_ros.git
+$ cd ~/Yolo_python_container_for_ros/src/ros_yolo/src/darknet/
+$ make
+$ cd ~/Yolo_python_container_for_ros/
+$ source /opt/ros/kinetic/setup.bash
+$ catkin_make
+$ cd src/
+$ mkdir tmp
+$ tar -xvzf ~/Yolo_python_container_for_ros/src/ros_yolo.tar.gz -C tmp ros_yolo/src/darknet/cfg ros_yolo/src/darknet/data
+$ cp -a /tmp/ros_yolo/src/darknet/cfg /tmp/ros_yolo/src/darknet/data ~/Yolo_python_container_for_ros/src/ros_yolo/src/darknet
+$ rm -rv tmp
+$ sed -i "s|$names = /home/lar0/alex_project_ros_ws/src/ros_yolo/src/darknet/data/coco.names|$names = $HOME/Yolo_python_container_for_ros/src/ros_yolo/src/darknet/data/coco.names|" ros_yolo/src/darknet/cfg/coco.data
+```
 
 ##### Advanced options(set in the makefile).
 GPU=1
