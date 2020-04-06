@@ -21,6 +21,8 @@ $ cd Yolo_python_container_for_ros/src/ros_yolo/src/darknet/
 $ make
 $ cd ../../../..
 $ source /opt/ros/kinetic/setup.bash
+$ rm -rv build
+$ rm -rv devel
 $ catkin_make
 $ cd src/
 $ mkdir tmp
