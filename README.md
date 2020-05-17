@@ -11,6 +11,12 @@
 * GPU with CC >= 3.0 https://en.wikipedia.org/wiki/CUDA#GPUs_supported
 * GCC
 
+## Troubleshoot for CUDA Toolkit installation
+* I recommend to use the method which mentioned in this ask ubuntu [answer](https://askubuntu.com/a/799185)
+* Another source of [CUDA Toolkit installation guide](https://medium.com/devoops-and-universe/installation-of-cuda-toolkit-on-linux-54765a3e3c7d) which you can try
+* Nvidia's formal [CUDA Toolkit installation guide](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
+
+
 ## **How to run**
 ##### Compilation
 Compiling on Linux by using command make (or alternative way by using command: cmake . && make ):
