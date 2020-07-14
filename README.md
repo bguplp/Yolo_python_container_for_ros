@@ -40,6 +40,13 @@ sudo apt-get install nvidia-driver-<version-number>
 * Another source of [CUDA Toolkit installation guide](https://medium.com/devoops-and-universe/installation-of-cuda-toolkit-on-linux-54765a3e3c7d) which you can try
 * Nvidia's formal [CUDA Toolkit installation guide](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
 * Nvidia's [CUDA Toolkit quick installation guide](https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html#linux)
+* Don't forget to add to lines to your .bashrc file
+```bash
+# >>> cuda >>>
+export PATH=/usr/local/cuda-<version-number>/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-<version-number>/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+# <<< cuda <<<
+```
 
 
 ## **How to run**
