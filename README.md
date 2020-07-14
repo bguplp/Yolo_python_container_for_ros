@@ -11,10 +11,35 @@
 * GPU with CC >= 3.0 https://en.wikipedia.org/wiki/CUDA#GPUs_supported
 * GCC
 
-## Troubleshoot for CUDA Toolkit installation
+## Installation troubleshoot
+
+### NVIDIA driver
+* First try to install NVIDIA via GUI. 
+go to:
+System Settings > Software & Updates > Additional Drivers
+choose the NVIDIA driver version which you want to install, press Apply Changes and reboot.
+* In case there are no NVIDIA installation options in your Additional Drivers, I recommend to download the installation via PPA like that:
+```bash
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt-get update
+```
+Now check again at:
+System Settings > Software & Updates > Additional Drivers 
+For new NVIDIA installetion like discribed above.
+* You can use this command to determine which NVIDIA driver is recommended for you
+```bash
+sudo ubuntu-drivers devices
+```
+and this command to install via terminal
+```bash
+sudo apt-get install nvidia-driver-<version-number>
+```
+
+### CUDA Toolkit
 * I recommend to use the method which mentioned in this ask ubuntu [answer](https://askubuntu.com/a/799185)
 * Another source of [CUDA Toolkit installation guide](https://medium.com/devoops-and-universe/installation-of-cuda-toolkit-on-linux-54765a3e3c7d) which you can try
 * Nvidia's formal [CUDA Toolkit installation guide](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
+* Nvidia's [CUDA Toolkit quick installation guide](https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html#linux)
 
 
 ## **How to run**
