@@ -53,22 +53,22 @@ export LD_LIBRARY_PATH=/usr/local/cuda-<version-number>/lib64${LD_LIBRARY_PATH:+
 ##### Compilation
 Compiling on Linux by using command make (or alternative way by using command: cmake . && make ):
 ```bash
-$ cd ~/
-$ git clone https://github.com/bguplp/Yolo_python_container_for_ros.git
-$ cd Yolo_python_container_for_ros/src/ros_yolo/src/darknet/
-$ make
-$ cd ../../../..
-$ source /opt/ros/kinetic/setup.bash
-$ rm -rv build
-$ rm -rv devel
-$ catkin_make
-$ cd src/
-$ mkdir tmp
-$ tar -xvzf ros_yolo.tar.gz -C tmp ros_yolo/src/darknet/cfg ros_yolo/src/darknet/data
-$ cp -a tmp/ros_yolo/src/darknet/cfg tmp/ros_yolo/src/darknet/data ros_yolo/src/darknet
-$ rm -rv tmp
-$ sed -i "s|$names = /home/lar0/alex_project_ros_ws/src/ros_yolo/src/darknet/data/coco.names|$names = $HOME/Yolo_python_container_for_ros/src/ros_yolo/src/darknet/data/coco.names|" ros_yolo/src/darknet/cfg/coco.data
-$ sudo apt-get install ros-kinetic-vision-msgs
+cd ~/
+git clone https://github.com/bguplp/Yolo_python_container_for_ros.git
+cd Yolo_python_container_for_ros/src/ros_yolo/src/darknet/
+make
+cd ../../../..
+source /opt/ros/kinetic/setup.bash
+rm -rv build
+rm -rv devel
+catkin_make
+cd src/
+mkdir tmp
+tar -xvzf ros_yolo.tar.gz -C tmp ros_yolo/src/darknet/cfg ros_yolo/src/darknet/data
+cp -a tmp/ros_yolo/src/darknet/cfg tmp/ros_yolo/src/darknet/data ros_yolo/src/darknet
+rm -rv tmp
+sed -i "s|$names = /home/lar0/alex_project_ros_ws/src/ros_yolo/src/darknet/data/coco.names|$names = $HOME/Yolo_python_container_for_ros/src/ros_yolo/src/darknet/data/coco.names|" ros_yolo/src/darknet/cfg/coco.data
+sudo apt-get install ros-kinetic-vision-msgs
 ```
 
 ##### Advanced options(set in the makefile).
