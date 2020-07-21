@@ -45,6 +45,7 @@ sudo apt-get install nvidia-driver-<version-number>
 # >>> cuda >>>
 export PATH=/usr/local/cuda-<version-number>/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-<version-number>/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export CPATH=$CPATH:$HOME/NVIDIA_CUDA-<version-number>_Samples/common/inc
 # <<< cuda <<<
 ```
 
@@ -298,3 +299,4 @@ In terms of Wiki, indicators Precision and Recall have a slightly different mean
     * it is not necessary to train the network again, just use `.weights`-file already trained for 416x416 resolution
     * but to get even greater accuracy you should train with higher resolution 608x608 or 832x832, note: if error `Out of memory` occurs then in `.cfg`-file you should increase `subdivisions=16`, 32 or 64.
  
+
