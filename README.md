@@ -49,7 +49,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda-<version-number>/lib64${LD_LIBRARY_PATH:+
 export CPATH=$CPATH:$HOME/NVIDIA_CUDA-<version-number>_Samples/common/inc
 # <<< cuda <<<
 ```
-
+* Fix for CUDA incompatible with gcc version is [here](https://stackoverflow.com/a/46380601)
 
 ## **How to run**
 ##### Compilation
