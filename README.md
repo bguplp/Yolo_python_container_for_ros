@@ -71,6 +71,8 @@ cp -a tmp/ros_yolo/src/darknet/cfg tmp/ros_yolo/src/darknet/data ros_yolo/src/da
 rm -rv tmp
 sed -i "s|$names = /home/lar0/alex_project_ros_ws/src/ros_yolo/src/darknet/data/coco.names|$names = $HOME/Yolo_python_container_for_ros/src/ros_yolo/src/darknet/data/coco.names|" ros_yolo/src/darknet/cfg/coco.data
 sudo apt-get install ros-kinetic-vision-msgs
+cd
+echo "source $HOME/Yolo_python_container_for_ros/devel/setup.bash" >> .bashrc
 ```
 
 ##### Advanced options(set in the makefile).
